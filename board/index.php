@@ -3,12 +3,14 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="css/boardStyle.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript" src="script/script.js"></script>
     </head>
     <body>
         <div id="messageForm">
-            <form action="post.php" method="post">
+            <form id="postForm" action="post.php" method="post">
                 <p>お名前　<input type="text" id="nameForm" name="nameForm"></p>
-                <p>タイトル<input type="text" id="titleForm" name="titleForm"><input type="submit" value="投稿する"></p>
+                <p>タイトル<input type="text" id="titleForm" name="titleForm"><!--input type="submit" value="投稿する"--><input type="button" name="postConfirmButton" value="投稿する" onClick="postConfirm()"></p>
                 <p>
                     メッセージ<br>
                     <textarea name="messageForm" id="messageForm" cols="100" rows="10" wrap="soft"></textarea>
