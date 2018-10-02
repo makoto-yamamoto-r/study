@@ -1,0 +1,76 @@
+/*コメント*/
+
+body {
+    background-color: #ffc;
+    /*margin: auto;*/
+}
+
+form > p{
+    margin: 0px 8px;
+}
+
+#nameForm{
+    margin: 0px 5px;
+    width: 250px;
+}
+
+#titleForm{
+    margin: 0px 5px;
+    width: 400px;
+}
+
+.content {
+    background-color: white;
+    border: thin solid black;
+    /*これと同じ
+    border-color: black;
+    border-width: thin;
+    border-style: solid;
+    */
+    margin: 30px 30px;/*上下　左右*/
+}
+
+.content-header{
+    margin: 10px 0px;
+}
+
+.content-title{
+    margin: 0px 10px;
+    color: green;
+    font-weight: bold;
+}
+.content-username{
+    margin: 0px 5px;
+}
+.content-postdate{
+    margin: 0px 5px;
+}
+.content-id{
+    margin: 0px 5px;
+    color: green;
+}
+.content-message{
+    margin: 20px 20px;
+    color: red;
+}
+
+.username,
+.postdate,
+.id,
+.message{
+    margin: 0;
+}
+
+.username{
+    font-weight: bold;
+}
+
+/*いろいろできる
+.content > p {
+    background-color: gray;
+}
+
+.content > p > span{
+    background-color: aquamarine;
+}
+*/

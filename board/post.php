@@ -40,6 +40,7 @@ if($exitFlag){
 print("名前：".$name."<br>");
 print("タイトル：".$title."<br>");
 print("メッセージ：".$message."<br>");
+print("時間：".$time."<br>");
 
 //MySQL INSERT
 $mysqli = new mysqli("localhost","root","","test");
