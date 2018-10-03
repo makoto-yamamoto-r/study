@@ -1,7 +1,31 @@
 
 function postConfirm(){
     makeConfirmWindow("本当に投稿しますか？",function(){
-        $("#postForm").submit();
+        
+        //$("#postForm").submit();
+        var formData = $("#postForm").serialize();
+        $.ajax({
+            url: "board/post",
+            type: "POST",
+            data: formData,
+        })
+        .done(function (data) {
+            if(data.indexOf('<div class="content">') !== -1){
+                $(".board_contents").append(data);
+            }
+            else{
+                $("body").empty();
+                $("body").append(data);
+            }
+        })
+        .fail(function (data) {
+            $("body").empty();
+            $("body").append(data);
+        })
+        .always(function (data) {
+            console.log(data);
+        });
+        
     },"投稿","閉じる");
 }
 
@@ -73,6 +97,7 @@ function makeConfirmWindow(message,okFunction,okLabel,cancelLabel){
     //クリック設定
     $("#modalwindow-okButton").unbind().click(function(){
         okFunction();
+        closeWindow();
     });
     $("#modalwindow-cancelButton").unbind().click(function(){
         closeWindow();
