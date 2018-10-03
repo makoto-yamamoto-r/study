@@ -1,0 +1,35 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <?php
+        $id = $this->request->getQuery("id");
+        if($id === false){
+            return "idを指定してください。";
+        }
+        
+        $content = Board_db_phalcon::findFirst($id);
+        if($content === false){
+            return "id:{$id}の投稿がありません。<br>";
+        }
+        
+        //<br>を改行コードに戻す
+        $content->message = str_replace("<br>","\n",$content->message);
+        
+        printf(
+            '<form action="post" method="POST">'
+                .'<p class=form_oneLine>お名前　<input type="text" name="name" id="nameForm" value="'.($content->name).'"></p>'
+                .'<p class=form_oneLine>'
+                    .'タイトル<input type="text" name="title" id="titleForm" value="'.($content->title).'">'
+                    .' <input type="submit" value="送信">'
+                .'</p>'
+                .'<p class=form_oneLine>'
+                    .'メッセージ<br>'
+                    .'<textarea cols="70" rows="10" name="message" id="messageForm">'.($content->message).'</textarea>'
+                .'</p>'
+                .'<input type="hidden" name="id" value="'.($id).'">'
+            .'</form>'
+        );
+        ?>
+    </body>
+</html>

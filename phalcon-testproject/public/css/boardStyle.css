@@ -1,0 +1,105 @@
+body {
+    background-color: #ffc;
+}
+
+.form_oneLine {
+    margin: 0px 8px;
+}
+
+#nameForm {
+    margin: 0px 5px;
+    width: 250px;
+}
+
+#titleForm {
+    margin: 0px 5px;
+    width: 400px;
+}
+
+.content {
+    background-color: white;
+    border: thin solid black;
+    /*これと同じ
+    border-color: black;
+    border-width: thin;
+    border-style: solid;
+    */
+    margin: 30px 30px;/*上下　左右*/
+}
+
+.content_header {
+    margin: 10px 0px;
+}
+
+.content_titleArea {
+    margin: 0px 10px;
+}
+.content_title-boldGreen {
+    color: green;
+    font-weight: bold;
+}
+.content_userNameArea {
+    margin: 0px 5px;
+}
+.content_postDateArea {
+    margin: 0px 5px;
+}
+.content_idArea-green {
+    margin: 0px 5px;
+    color: green;
+}
+.content_messageArea {
+    margin: 20px 20px;
+}
+.content_message-red {
+    color: red;
+}
+.content_footer-rightAlign {
+    text-align: right;
+    margin: 10px 0px;
+}
+.content_editButton,
+.content_deleteButton {
+    margin: 0px 10px;
+}
+
+
+.username,
+.postdate,
+.id,
+.message {
+    margin: 0;
+}
+
+.username {
+    font-weight: bold;
+}
+
+.modalwindow-background {
+    z-index: 10;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modalwindow-window {
+    z-index: 11;
+    padding: 10px 30px;
+    position: fixed;
+    display: none;
+    background-color: white;
+}
+
+.modalwindow-buttonArea {
+    text-align: right;
+}
+
+#modalwindow-okButton,
+#modalwindow-cancelButton {
+    color: blue;
+    margin: 5px 5px;
+}

@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <?php $this->assets->outputCss('header') ?>
+        <?php $this->assets->outputJs('header') ?>
+    </head>
+    
+    <body>
+        <h1>Board</h1>
+        <?php echo $this->tag->form(["board/post","id"=>"postForm"]); ?>
+        
+        <p class=form_oneLine>
+            お名前　
+            <?php echo $this->tag->textField(["name","id"=>"nameForm"]); ?>
+        </p>
+        <p class=form_oneLine>
+            タイトル
+            <?php echo $this->tag->textField(["title","id"=>"titleForm"]); ?>
+            <!-- 本当はtagを使ってbuttonを生成したい -->
+            <input type="button" onclick="postConfirm()" value="投稿">
+        </p>
+        <p class=form_oneLine>
+            メッセージ<br>
+            <?php echo $this->tag->textArea(["message","cols"=>"70","rows"=>"10","id"=>"messageForm"]); ?>
+        </p>
+
+        <?php echo "</form>"; ?>
+        
+        
+        
+        <?php //掲示板コンテンツ表示部
+        
+        define("DATE_FORMAT","Y/m/d(D) H:i");
+        
+        $contents = Board_db_phalcon::find();
+        $contents_length = count($contents);
+        
+        foreach($contents as $content){
+            //
+            printf(
+                '<div class="content">'
+                    .'<div class="content_header">'
+                        .'<span class="content_titleArea"><span class="content_title-boldGreen">%s</span></span>'
+                        .'<span class="content_userNameArea">投稿者：<span class="content_userName-bold">%s</span></span>'
+                        .'<span class="content_postDateArea">投稿日：<span class="content_postDate">%s</span></span>'
+                        .'<span class="content_idArea-green">No.<span class="content_id">%s</span></span>'
+                    .'</div>'
+                    .'<div class="content_messageArea"><span class="content_message-red">%s</span></div>'
+                    .'<div class="content_footer-rightAlign">'
+                        .'<input type="button" class="content_editButton" value="編集" onclick="location.href=\'board/edit?id=%s\'">'//ここらへんよくない
+                        .'<input type="button" class="content_deleteButton" value="削除" onclick="deleteConfirm(%s)">'
+                    .'</div>'
+                .'</div>'
+                ,$content->title
+                ,$content->name
+                ,date(DATE_FORMAT,strtotime($content->time))
+                ,$content->id
+                ,$content->message
+                ,$content->id
+                ,$content->id
+            );
+        }
+
+        ?>
+    </body>
+</html>
+
